@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { OffreComponent } from './offre/offre.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
+import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OffreComponent,
-    UserComponent
+    UserComponent,
+    MainLayoutComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

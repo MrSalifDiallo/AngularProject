@@ -38,7 +38,9 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -73,7 +75,8 @@
               "buildTarget": "AngularProject2:build:production"
             },
             "development": {
-              "buildTarget": "AngularProject2:build:development"
+              "buildTarget": "AngularProject2:build:development",
+              "hmr": true
             }
           },
           "defaultConfiguration": "development"
@@ -100,7 +103,9 @@
               "src/styles.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
