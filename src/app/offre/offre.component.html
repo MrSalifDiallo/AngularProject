@@ -1,0 +1,22 @@
+<p>offre works!</p>
+<table class="table table-bordered">
+     <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Lieu</th>
+        </tr>
+    <tr *ngFor="let o of offres">
+        <td>{{o.id}}</td>
+        <td>{{o.title}}</td>
+        <td>{{o.description}}</td>
+        <td>{{o.date}}</td>
+        <td>{{o.lieu}}</td>
+        <td>
+            <!-- <button class="btn btn-danger" (click)="destroy(o.id)">Delete</button> -->
+            <button class="btn btn-primary" routerLink="/updateOffre/{{o.id}}" >Update</button>
+        </td>
+    </tr>
+    
+</table>

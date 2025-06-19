@@ -35,7 +35,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -52,6 +53,7 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
+                
               ],
               "outputHashing": "all"
             },
@@ -60,8 +62,9 @@
               "extractLicenses": false,
               "sourceMap": true
             }
+            
           },
-          "defaultConfiguration": "production"
+          "defaultConfiguration": "development"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -94,7 +97,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           }
