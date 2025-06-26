@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserComponent } from './user/user.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AddOffreComponent } from './offre/add-offre/add-offre.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { WelcomeComponent } from './welcome/welcome.component';
     OffreComponent,
     UserComponent,
     MainLayoutComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AddOffreComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

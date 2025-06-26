@@ -1,0 +1,28 @@
+<div class="container">
+    <form  [formGroup]="offreForm" (ngSubmit)="onSubmit()">
+        <label for="">Title</label>
+        <input type="text" formControlName="title" class="form-control">
+        <!-- <div *ngIf="submitted && f2.title.errors">
+            <span class="text-danger" *ngIf="f2.title.errors['required']">*Title est obligatoire</span>
+             <span class="text-danger" *ngIf="f2.title.errors['minlength']">*Minimum 3 caracteres</span>
+        </div> -->
+        <label for="">Lieu</label>
+        <input type="text" formControlName="lieu" class="form-control">
+         <!-- <div *ngIf="submitted && f2.lieu.errors">
+            <span class="text-danger" *ngIf="f2.lieu.errors['required']">*Lieu est obligatoire</span>
+        </div> -->
+        <label for="">Date</label>
+        <input type="date" formControlName="date" class="form-control">
+         <!-- <div *ngIf="submitted && f2.date.errors">
+            <span class="text-danger" *ngIf="f2.date.errors['required']">*Date est obligatoire</span>
+        </div> -->
+        <label for="">Description</label>
+        <textarea formControlName="description" id="" class="form-control"></textarea>
+         <!-- <div *ngIf="submitted && f2.description.errors">
+            <span class="text-danger" *ngIf="f2.description.errors['required']">*Description est obligatoire</span>
+        </div> -->
+
+        <br>
+        <button type="submit" class="btn btn-primary">{{textButton}}</button>
+    </form>
+</div>

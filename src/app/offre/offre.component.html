@@ -1,3 +1,4 @@
+<button class="btn btn-success" routerLink="/app/addOffre">Add</button>
 <table class="table table-bordered">
      <tr>
             <th>Id</th>
@@ -11,12 +12,10 @@
         <td>{{o.id}}</td>
         <td>{{o.title}}</td>
         <td>{{o.description}}</td>
-        <td>{{o.date}}</td>
+        <td>  {{o.date | date:'dd/MM/yyyy'}}</td>
         <td>{{o.lieu}}</td>
         <td>
-            <!-- <button class="btn btn-danger" (click)="destroy(o.id)">Delete</button> -->
-            <button class="btn btn-primary" routerLink="/updateOffre/{{o.id}}" >Update</button>
+        <button class="btn btn-danger" (click)="destroy(o.id!)">Delete</button>            <!-- <button class="btn btn-primary" routerLink="/updateOffre/{{o.id}}" >Update</button> -->
         </td>
     </tr>
-    
 </table>

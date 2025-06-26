@@ -4,6 +4,7 @@ import { OffreComponent } from './offre/offre.component';
 import { UserComponent } from './user/user.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
+import { AddOffreComponent } from './offre/add-offre/add-offre.component';
 
 const routes: Routes = [
   // Route sans layout
@@ -14,15 +15,22 @@ const routes: Routes = [
     path: 'app',
     component: MainLayoutComponent,
     children: [
-      { path: 'offre', component: OffreComponent },
-      { path: 'user', component: UserComponent }
+      { path: 'offre', 
+        component: OffreComponent,
+      },
+      { path:'addOffre',
+          component:AddOffreComponent,
+      },
+      { path: 'user', 
+        component: UserComponent 
+      }
     ]
   },
 
   // Redirection par défaut vers la page de bienvenue
   { path: '', redirectTo: '/welcome', pathMatch: 'full' },
   
-  // Optionnel : une route "catch-all" pour les pages non trouvées
+  // Si la route n'existe pas
   { path: '**', redirectTo: '/welcome' }
 ];
 

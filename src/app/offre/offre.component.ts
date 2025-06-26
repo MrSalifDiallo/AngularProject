@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Offre } from '../model/offre';
 import { OffreService } from '../services/offre.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-offre',
@@ -10,13 +11,34 @@ import { OffreService } from '../services/offre.service';
 })
 export class OffreComponent implements OnInit{
 
+  
   offres:Offre[]=[];
-  constructor(private offreService:OffreService){
+  constructor(private offreService:OffreService,
+     private router: Router,
+      private route: ActivatedRoute
+  ){
 
   }
   ngOnInit(): void {
     this.getAllOffres();
   }
+
+   //Pour supprimer une offre
+    destroy(id:number){
+      return this.offreService.destroy(id).subscribe({
+      next: () => {
+        //Filtrer pour éviter un nouvel appel API
+        this.offres = this.offres.filter(o => o.id !== id);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        console.log('Flux terminé');
+      }
+    });
+
+    }
 
   getAllOffres(){
     /*
