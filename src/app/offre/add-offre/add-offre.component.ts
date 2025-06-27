@@ -14,6 +14,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class AddOffreComponent {
   offres:Offre[]=[];
   @Output() ajoutReussi = new EventEmitter<void>();
+  @Output() updateReussi = new EventEmitter<void>();
+  // Variable pour stocker l'offre à éditer (null = mode ajout)
+  private _offreToEdit: Offre | null = null;
+  @Input() set offreToEdit(value: Offre | null) {
+    this._offreToEdit = value;
+    if (value) {
+      // Conversion de la date pour l'input type="date"
+      const dateStr = value.date ? new Date(value.date).toISOString().substring(0, 10) : '';
+      this.offreForm.patchValue({ ...value, date: dateStr });
+      this.textButton = "Modifier";
+    } 
+    else {
+      this.offreForm.reset();
+      this.textButton = "Valider";
+    }
+    this.submitted = false;
+  }
+  get offreToEdit() {
+    return this._offreToEdit;
+  }
     constructor(
       private offreService:OffreService,
       private router: Router,
@@ -45,37 +65,47 @@ export class AddOffreComponent {
       if (this.offreForm.invalid) {
         return;
       }
-       
+      const offre = this.offreForm.value as Offre;
+      if (this.textButton === "Modifier" && offre.id) {
+        // Mode édition
+        this.offreService.updateOffre(offre).subscribe({
+          next: () => {
+            this.updateReussi.emit();
+            this.offreForm.reset();
+            this.submitted = false;
+            this.textButton = "Valider";
+          },
+          error: 
+          (error) =>{
+             console.log(error); 
+            }
+        });
+      } 
       else {
-        if (this.textButton == "Valider") {
-          const offre = this.offreForm.value as Offre;
-          this.offreService.store(offre).subscribe({
-            next: (data: Offre[]) => {
-            this.offres = data;
+        // Mode ajout
+        this.offreService.store(offre).subscribe({
+          next: () => {
             this.ajoutReussi.emit();
             this.offreForm.reset();
             this.submitted = false;
-            },
-            error: (error) => {
-              console.log(error);
-            },
-            complete: () => {
-              //console.log('Flux terminé');
-            }
-          })
-        } 
-        /*else {
-          const offre = this.offreForm.value as Offre;
-          this.offreService.updateOffre(offre).subscribe(
-            (data) => {
-              this.router.navigateByUrl('/offre');
-            },
-            (error) => {
-              console.log(error);
-            }
-          )
-        }*/
+          },
+          error: (error) => { console.log(error); }
+        });
       }
     }
+    getOffreById(id: number) {
+    this.offreService.getOffreById(id)
+      .then((data: Offre) => {
+        this.offreForm.get('id')?.setValue(data.id!);
+        this.offreForm.get('lieu')?.setValue(data.lieu);
+        this.offreForm.get('title')?.setValue(data.title);
+        this.offreForm.get('description')?.setValue(data.description);
+        this.offreForm.get('date')?.setValue(data.date);
+        this.textButton = "Modifier";
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
    
 }

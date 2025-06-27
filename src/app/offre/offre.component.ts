@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { Offre } from '../model/offre';
 import { OffreService } from '../services/offre.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddingOffreComponent } from './adding-offre/adding-offre.component';
 import { AddOffreComponent } from './add-offre/add-offre.component';
 import { MessageService } from 'primeng/api';
 import { ModalOffreComponent } from './modal-offre/modal-offre.component';
@@ -17,10 +16,14 @@ export class OffreComponent implements OnInit{
   // Contrôle la visibilité du dialog
   dialogVisible = false;
 
-  // Ouvre le dialog quand on clique sur le bouton "Add"
-  openDialog() {
-    console.log('Bouton Add cliqué !');
+  // Variable pour stocker l'offre à éditer (null = mode ajout)
+  offreSelectionnee: Offre | null = null;
+
+  // Ouvre le dialog en mode ajout ou édition
+  openDialog(offre?: Offre) {
     this.dialogVisible = true;
+    // Si une offre est passée, on clone pour éviter la mutation directe
+    this.offreSelectionnee = offre ? { ...offre } : null;
   }
 
   onAjoutOffreReussi() {
@@ -38,7 +41,12 @@ export class OffreComponent implements OnInit{
     // Exemple : this.messageService.add({severity:'success', summary: 'Offre ajoutée', detail:'L\'offre a été ajoutée avec succès !'});
     this.messageService.add({severity:'success', summary:'Succès', detail:'Offre ajoutée avec succès !'});
   }
-
+  onUpdateOffreReussi() {
+    this.dialogVisible = false;
+    this.getAllOffres();
+    // Affiche un message de succès pour la mise à jour
+    this.messageService.add({severity:'info', summary:'Succès', detail:'Offre mise à jour avec succès !'});
+  }
   offres:Offre[]=[];
   constructor(private offreService:OffreService,
      private router: Router,
@@ -55,6 +63,7 @@ export class OffreComponent implements OnInit{
     destroy(id:number){
       return this.offreService.destroy(id).subscribe({
       next: () => {
+        this.messageService.add({severity:'error', summary:'Suppression', detail:'Offre Supprimée !'});
         //Filtrer pour éviter un nouvel appel API
         this.offres = this.offres.filter(o => o.id !== id);
       },
@@ -83,6 +92,9 @@ export class OffreComponent implements OnInit{
     // Il faut utiliser un objet avec next, error, complete.
     this.offreService.getAllOffres().subscribe({
       next: (data: Offre[]) => {
+        // Ici, data est le tableau d'offres récupéré depuis l'API
+        // Trie par id croissant
+        this.offres = data.sort((a, b) => (a.id ?? 0) - (b.id ?? 0));
         this.offres = data;
         console.log(this.offres);
       },
