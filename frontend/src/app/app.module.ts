@@ -18,6 +18,9 @@ import { AddOffreComponent } from './offre/add-offre/add-offre.component';
 import { PrimeNgModule } from './primeng/prime';
 import { ModalOffreComponent } from './offre/modal-offre/modal-offre.component';
 import { ModalOffreModule } from './offre/modal-offre/modal-offre.module';
+import { StudentComponent } from './student/student.component';
+import { TableModule } from 'primeng/table';
+import { ActionStudentComponent } from './student/action-student/action-student.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,8 @@ import { ModalOffreModule } from './offre/modal-offre/modal-offre.module';
     MainLayoutComponent,
     WelcomeComponent,
     AddOffreComponent,
+    StudentComponent,
+    ActionStudentComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,9 @@ import { ModalOffreModule } from './offre/modal-offre/modal-offre.module';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ButtonModule,
-    InputTextModule,
     ToastModule,
     ModalOffreModule,
+    TableModule,
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]

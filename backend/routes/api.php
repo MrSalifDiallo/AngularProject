@@ -21,6 +21,7 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 Route::apiResource("/offres",\App\Http\Controllers\OffresController::class);
+Route::apiResource("/students",\App\Http\Controllers\StudentsController::class);
 Route::post('/register', [AuthenticatedSessionController::class, 'register']);
 Route::post('/login', [AuthenticatedSessionController::class, 'login']);
 

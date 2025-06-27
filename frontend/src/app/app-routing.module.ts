@@ -5,6 +5,7 @@ import { UserComponent } from './user/user.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { AddOffreComponent } from './offre/add-offre/add-offre.component';
+import { StudentComponent } from './student/student.component';
 
 const routes: Routes = [
   // Route sans layout
@@ -23,6 +24,9 @@ const routes: Routes = [
       },
       { path: 'user', 
         component: UserComponent 
+      },
+      { path: 'student', 
+        component: StudentComponent 
       }
     ]
   },
