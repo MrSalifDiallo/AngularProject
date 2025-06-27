@@ -350,7 +350,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Salif Diallo**
 - GitHub: [@MrSalifDiallo](https://github.com/MrSalifDiallo)
-- LinkedIn: [Connect with me](https://linkedin.com/in/yourprofile)
+- LinkedIn: [Salif Diallo](https://www.linkedin.com/in/salif-diallo-152650313/)
+- Mail: [salifdiallo@esp.sn](mailto:salifdiallo@esp.sn)
 
 ---
 
@@ -468,7 +469,8 @@ Ce projet est sous licence MIT - consultez le fichier [LICENSE](LICENSE) pour pl
 
 **Salif Diallo**
 - GitHub: [@MrSalifDiallo](https://github.com/MrSalifDiallo)
-- LinkedIn: [Connectez-vous](https://linkedin.com/in/votreprofil)
+- LinkedIn: [Connectez-vous](https://www.linkedin.com/in/salif-diallo-152650313/)
+- Mail: [salifdiallo@esp.sn](mailto:salifdiallo@esp.sn)
 
 ---
 
