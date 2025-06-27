@@ -18,6 +18,7 @@ import { AddOffreComponent } from './offre/add-offre/add-offre.component';
 import { PrimeNgModule } from './primeng/prime';
 import { ModalOffreComponent } from './offre/modal-offre/modal-offre.component';
 import { ModalOffreModule } from './offre/modal-offre/modal-offre.module';
+import { StudentComponent } from './student/student.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ModalOffreModule } from './offre/modal-offre/modal-offre.module';
     MainLayoutComponent,
     WelcomeComponent,
     AddOffreComponent,
+    StudentComponent,
   ],
   imports: [
     BrowserModule,
