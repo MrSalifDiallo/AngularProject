@@ -3,6 +3,6 @@ export class Student {
     firstName!: string;
     lastName!: string;
     email!: string;
-    birthDate!: Date;
+    birthdate!: Date;
     level!: string;
 }

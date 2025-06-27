@@ -1,0 +1,47 @@
+<div class="container">
+    <form  [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <label for="">First Name</label>
+        <input type="text" formControlName="firstName" class="form-control">
+         <div *ngIf="submitted && f2.firstName.errors">
+            <span class="text-danger" *ngIf="f2.firstName.errors['required']">*Prénom est obligatoire</span>
+            <span class="text-danger" *ngIf="f2.firstName.errors['minlength']">*Minimum 3 caractères</span>
+        </div>
+        
+        <label for="">Last Name</label>
+        <input type="text" formControlName="lastName" class="form-control">
+         <div *ngIf="submitted && f2.lastName.errors">
+            <span class="text-danger" *ngIf="f2.lastName.errors['required']">*Nom est obligatoire</span>
+            <span class="text-danger" *ngIf="f2.lastName.errors['minlength']">*Minimum 3 caractères</span>
+        </div>
+        
+        <label for="">Email</label>
+        <input type="email" formControlName="email" class="form-control">
+         <div *ngIf="submitted && f2.email.errors">
+            <span class="text-danger" *ngIf="f2.email.errors['required']">*Email est obligatoire</span>
+            <span class="text-danger" *ngIf="f2.email.errors['email']">*Format d'email invalide</span>
+        </div>
+
+        <label for="">Birth Date</label>
+        <input type="date" formControlName="birthdate" class="form-control">
+         <div *ngIf="submitted && f2.birthdate.errors">
+            <span class="text-danger" *ngIf="f2.birthdate.errors['required']">*Date de naissance est obligatoire</span>
+        </div>
+
+        <label for="">Level</label>
+        <select formControlName="level" class="form-control">
+            <option value="">Sélectionner un niveau</option>
+            <option value="Licence 1">Licence 1</option>
+            <option value="Licence 2">Licence 2</option>
+            <option value="Licence 3">Licence 3</option>
+            <option value="Master 1">Master 1</option>
+            <option value="Master 2">Master 2</option>
+            <option value="Doctorat">Doctorat</option>
+        </select>
+         <div *ngIf="submitted && f2.level.errors">
+            <span class="text-danger" *ngIf="f2.level.errors['required']">*Niveau est obligatoire</span>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-primary">{{textButton}}</button>
+    </form>
+</div>

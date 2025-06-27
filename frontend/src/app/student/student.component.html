@@ -1,35 +1,40 @@
 <!-- Bouton Add qui ouvre le dialog en mode ajout -->
 <button class="btn btn-success" (click)="openDialog()">Add</button>
 <!-- Un SEUL modal, qui sert pour ajout et édition -->
-<app-modal-offre [title]="offreSelectionnee ? 'Modifier une Offre' : 'Ajouter Une Offre'"
+<app-modal-offre [title]="studentSelectionne ? 'Modifier un Étudiant' : 'Ajouter Un Étudiant'"
                  [visible]="dialogVisible"
                  (visibleChange)="dialogVisible = $event">
-    <app-add-offre
-        [offreToEdit]="offreSelectionnee"
-        (ajoutReussi)="onAjoutOffreReussi()"
-        (updateReussi)="onUpdateOffreReussi()">
-    </app-add-offre>
+    <app-action-student
+        [studentToEdit]="studentSelectionne"
+        (ajoutReussi)="onAjoutStudentReussi()"
+        (updateReussi)="onUpdateStudentReussi()">
+    </app-action-student>
 </app-modal-offre>
 
 <table class="table table-bordered">
      <tr>
             <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Lieu</th>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Email</th>
+            <th>Date de naissance</th>
+            <th>Niveau</th>
             <th>Actions</th>
         </tr>
-    <tr *ngFor="let o of offres">
-        <td>{{o.id}}</td>
-        <td>{{o.title}}</td>
-        <td>{{o.description}}</td>
-        <td>  {{o.date | date:'dd/MM/yyyy'}}</td>
-        <td>{{o.lieu}}</td>
+    <tr *ngFor="let student of students">
+        <td>{{student.id}}</td>
+        <td>{{student.firstName}}</td>
+        <td>{{student.lastName}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.birthdate | date:'dd/MM/yyyy'}}</td>
+        <td>{{student.level}}</td>
         <td>
-        <button class="btn btn-danger" (click)="destroy(o.id!)">Delete</button> 
+        <button class="btn btn-danger" (click)="destroy(student.id!)">Delete</button> 
         <!-- Bouton Update qui ouvre le dialog en mode édition -->
-        <button class="btn btn-info" (click)="openDialog(o)">Update</button>
+        <button class="btn btn-info" (click)="openDialog(student)">Update</button>
         </td>
     </tr>
 </table>
+
+
+
