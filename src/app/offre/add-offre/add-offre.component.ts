@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Offre } from '../../model/offre';
 import { OffreService } from '../../services/offre.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -13,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 export class AddOffreComponent {
   offres:Offre[]=[];
+  @Output() ajoutReussi = new EventEmitter<void>();
     constructor(
       private offreService:OffreService,
       private router: Router,
@@ -28,6 +29,11 @@ export class AddOffreComponent {
     date: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
   });
+
+
+  get f2() {
+    return this.offreForm.controls;
+  }
   
     ngOnInit(): void {
       //this.getAllOffres();
@@ -46,7 +52,9 @@ export class AddOffreComponent {
           this.offreService.store(offre).subscribe({
             next: (data: Offre[]) => {
             this.offres = data;
-            this.router.navigateByUrl('/app/offre');
+            this.ajoutReussi.emit();
+            this.offreForm.reset();
+            this.submitted = false;
             },
             error: (error) => {
               console.log(error);
