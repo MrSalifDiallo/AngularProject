@@ -51,10 +51,12 @@ AngularProject/
 │   │   ├── Http/Controllers/
 │   │   │   ├── Api/         # API Controllers
 │   │   │   ├── Auth/        # Authentication Controllers
-│   │   │   └── OffresController.php
+│   │   │   ├── OffresController.php
+│   │   │   └── StudentsController.php
 │   │   ├── Models/
 │   │   │   ├── User.php
-│   │   │   └── Offre.php
+│   │   │   ├── Offre.php
+│   │   │   └── Students.php
 │   │   └── Providers/
 │   ├── database/
 │   │   ├── migrations/
@@ -74,6 +76,9 @@ AngularProject/
 │   │   │   │   ├── add-offre/  # Form component for CRUD operations
 │   │   │   │   ├── modal-offre/ # Reusable modal component
 │   │   │   │   └── offre.component # Main offers listing component
+│   │   │   ├── student/        # Student management feature module
+│   │   │   │   ├── action-student/ # Form component for student CRUD operations
+│   │   │   │   └── student.component # Main students listing component
 │   │   │   ├── user/           # User management components
 │   │   │   ├── welcome/        # Welcome page component
 │   │   │   └── primeng/        # PrimeNG configuration
